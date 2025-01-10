@@ -1,0 +1,99 @@
+{{!-- TODO: Do we want to translate coordinates into more specific location info? --}}
+
+{{!-- Note: Boulder's Coordinates are 40.0150, 105.2705 --}}
+
+{{!-- Geolocation API
+navigator.geolocation.getCurrentPosition(); --}}
+
+<head>
+    <link rel="stylesheet" href="../../resources/css/finder.css">
+</head>
+
+<div id="finder-all">
+    <h2>Aurora Finder</h2>
+    <form action="/aurora" method="GET">
+        <label for="latitude_input" class="form-label">Enter Latitude Coordinate Here</label>
+        <input type="text" class="form-control" id="latitude_input" name="latitude" placeholder="40.0150" required>
+
+        <label for="longitude_input" class="form-label">Enter Longitude Coordinate Here</label>
+        <input type="text" class="form-control" id="longitude_input" name="longitude" placeholder="105.2705" required>
+
+        <button id="submit_button" class="btn btn-primary" type="submit">
+            Find Aurora
+        </button>
+    </form>
+
+    {{!-- Note: Both Style.display block/none work as well as style.visibility visible/hidden --}}
+
+
+    <script>
+        // Use alongside onclick="return displayAuroraData()" in button tag
+        // This all works on the url w/ data -- but then the button doesn't take us to that url
+        // function displayAuroraData(best_prob) {
+        //     const direct = document.getElementById('aurora_direct');
+        //     const nearby = document.getElementById('aurora_nearby');
+        //     const best = document.getElementById('aurora_best');
+        //     direct.style.visibility = 'visible';
+        //     nearby.style.visibility = 'visible';
+        //     best.style.visibility = 'visible';
+        //     // e.preventDefault(); // w/ e param
+        //     // also, something with iframes somewhere?
+        //     if (best_prob == null) {
+        //         return false;
+        //     }
+        // }
+        // function displayAuroraData() {
+        //    const direct = document.getElementById("aurora_direct");
+        //    const nearby = document.getElementById("aurora_nearby");
+        //    const best = document.getElementById("aurora_best");
+
+        //    direct.style.visibility = "visible";
+        //    nearby.style.visibility = "visible";
+        //    best.style.visibility = "visible";
+        // }
+        function changeVisibility() {
+            const element = document.getElementById(id);
+
+            element.style.visibility = "visible";
+        }
+    </script>
+    <br>
+
+    <h4>This will determine the following:</h4>
+    <ul>
+        <li>
+            <h4>Your Chance of Seeing an Aurora <span id="aurora_direct">{{aurora_prob}}</span></h4>
+        </li>
+        <li>
+            <h4>Your Chance of Seeing an Aurora Within 600 miles <span id="aurora_nearby">{{nearby_prob}}</span>
+            </h4>
+        </li>
+        <li>
+            <h4>Your Best Chance of Seeing an Aurora Anywhere <span id="aurora_best">{{best_prob}}</span><span
+                    id="aurora_best_loc">{{best_lat}}{{best_long}}</span></h4>
+        </li>
+    </ul>
+    {{!-- <div id="aurora_direct"> --}}
+        {{!-- <h4>Your Chance of Seeing an Aurora <span id="aurora_direct" style="visiblity: hidden"
+                onclick="() => {// changeVisibility(" aurora_direct")}">{{aurora_prob}}%</span></h4> --}}
+        {{!--
+    </div> --}}
+
+    {{!-- <div id="aurora_nearby"> --}}
+        {{!-- API returns 'the highest probability of seeing an aurora within 9 degrees (approx. 1000km) of your
+        location'
+        or about 621 milies--}}
+        {{!-- <h4>Your Chance of Seeing an Aurora Within 600 miles <span id="aurora_nearby">{{nearby_prob}}%</span></h4>
+        --}}
+        {{!--
+    </div> --}}
+
+    {{!-- <div id="aurora_best"> --}}
+        {{!-- Note: I'm not sure if the API returns data for what this chance is. --}}
+        {{!-- <h4>Your Best Chance of Seeing an Aurora is <span id="aurora_best">{{best_prob}}%</span> at (<span
+                id="aurora_best_loc">{{best_lat}},{{best_long}}</span>).</h4> --}}
+        {{!-- <h5>The location (latitude, longitude) (<span id="aurora_best_loc">{{best_lat}},{{best_long}}</span>)</h5>
+        --}}
+        {{!--
+    </div> --}}
+</div>

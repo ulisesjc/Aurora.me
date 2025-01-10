@@ -1,0 +1,41 @@
+<header>
+    <nav class="navbar navbar-expand-sm border-bottom" id="navbar">
+        <div class="container">
+            {{!-- <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbar-collapse" aria-controls="navbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> --}}
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/finder">Finder</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/social">Social</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+        <a href="/profile">
+
+            {{!--Only displayu7 if there is a user--}}
+            {{#if user}}
+            <img id="profile_picture" class="rounded float-end" src="{{user.profile_pic}}" alt="Profile picture"
+                width="60" height="60">
+            {{/if}}
+        </a>
+    </nav>
+</header>
