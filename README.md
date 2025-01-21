@@ -3,4 +3,4 @@ Aurora Tracker Final Project for CSCI3308. This is my final project for my Softw
 
 This project was made with a team of 5, following AGILE methodologies.
 
-This project uses HTML/CSS for the frontend, Node.js for the middleware, and Express.js for the backend.
+This project uses HTML/CSS for the frontend, Node.js for the middleware, and Express.js with PostgreSQL for the backend and database.
